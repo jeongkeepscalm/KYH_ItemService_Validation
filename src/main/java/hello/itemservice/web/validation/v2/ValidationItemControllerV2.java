@@ -34,13 +34,13 @@ public class ValidationItemControllerV2 {
    * 
    * InitBinder
    *    해당 컨트롤러에만 영향을 줌
-   *    글로벌 설정 별도 필요
+   *    글로벌 설정시 별도 필요 x
    */
-  /*@InitBinder
+  @InitBinder
   public void init(WebDataBinder webDataBinder) {
     log.info("init binder={}", webDataBinder);
     webDataBinder.addValidators(itemValidator);
-  }*/
+  }
 
   @GetMapping
   public String items(Model model) {

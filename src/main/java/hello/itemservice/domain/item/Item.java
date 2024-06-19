@@ -1,21 +1,34 @@
 package hello.itemservice.domain.item;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class Item {
 
-    private Long id;
-    private String itemName;
-    private Integer price;
-    private Integer quantity;
+  private Long id;
 
-    public Item() {
-    }
+  @NotBlank // 빈값 && 공백 허용 x
+  private String itemName;
 
-    public Item(String itemName, Integer price, Integer quantity) {
-        this.itemName = itemName;
-        this.price = price;
-        this.quantity = quantity;
-    }
+  @NotNull
+  @Range(min = 1_000, max = 1_000_000)
+  private Integer price;
+
+  @NotNull
+  @Max(9_999)
+  private Integer quantity;
+
+  public Item() {}
+
+  public Item(String itemName, Integer price, Integer quantity) {
+    this.itemName = itemName;
+    this.price = price;
+    this.quantity = quantity;
+  }
+
 }
